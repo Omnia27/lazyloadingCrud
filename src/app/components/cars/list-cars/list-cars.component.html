@@ -1,0 +1,142 @@
+<!-- <p>list-cars works!</p>
+<button class="btn-success">d</button>
+<div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>            
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Model</th>
+          <th>color</th>
+          <th> Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars">
+          <td>{{car.name}}</td>
+          <td>{{car.model}}</td>
+          <td>{{car.color}}</td>
+        </tr>
+    
+      </tbody>
+    </table>
+  </div> -->
+  <!-- <div class="custom-datatable">
+    <ngx-datatable #table class="bootstrap" [rows]="cars" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+      [rowHeight]="'auto'" [limit]="10">
+      <ngx-datatable-column [width]="80" " prop="name">
+        <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+          <a href="javascript:void(0)" (click)="onEdit(row, rowIndex)">
+            {{ row.name }}
+          </a>
+  
+        </ng-template>
+      </ngx-datatable-column>
+    
+    </ngx-datatable>
+  </div> -->
+  <div class="container">
+    <input
+    type="text"
+    class="style-input"
+    placeholder="Search ....."
+    (keyup)="updateFilter($event)"
+  />
+ 
+  <button  (click)="addNewCar()" class="btn btn-dark float-right mt-3" > New car</button>
+    <ngx-datatable #table class="bootstrap" [rows]="listCars" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+      [rowHeight]="'auto'" [limit]="6">
+      <ngx-datatable-column [width]="80" name="name" prop="name">
+        <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+          <a href="javascript:void(0)" (click)="onEdit(row, rowIndex)">
+            {{ row.name }}
+          </a>
+  
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column [width]="80" name="model" prop="model">
+      </ngx-datatable-column>
+      <ngx-datatable-column [width]="80" name="color" prop="color">
+      </ngx-datatable-column>
+      <ngx-datatable-column [width]="80" name="image" prop="imageUrl">
+        <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+          <img src="{{ row.imageUrl }}"  alt="Not found " width="50px" height="50px"/>
+            
+          
+  
+        </ng-template>
+      </ngx-datatable-column>
+
+       <ngx-datatable-column
+              prop="edit"
+              name="Edit"
+              [sortable]="false"
+              [canAutoResize]="false"
+              [draggable]="false"
+              [resizeable]="false"
+            >
+              <ng-template
+                let-value="value"
+                let-row="row"
+                let-rowIndex="rowIndex"
+                ngx-datatable-cell-template
+              >
+                <a href="javascript:void(0)" >
+                  <i class="fa fa-edit" (click)="onEdit(row)"></i>
+                </a>
+              </ng-template>
+       </ngx-datatable-column>
+
+            <ngx-datatable-column
+              prop="delete"
+              name="delete"
+              [width]="80"
+              [sortable]="false"
+              [canAutoResize]="false"
+              [draggable]="false"
+              [resizeable]="false"
+             
+            >
+              <ng-template
+                let-value="value"
+                let-row="row"
+                let-rowIndex="rowIndex"
+                ngx-datatable-cell-template
+               
+              >
+              <a href="javascript:void(0)" >
+                <i class="fa fa-trash" (click)="onDelete(row)"></i>
+               
+               
+              </a>
+             
+              </ng-template>
+            </ngx-datatable-column>
+   <ngx-datatable-footer>
+    <ng-template
+      ngx-datatable-footer-template
+      let-rowCount="rowCount"
+      let-pageSize="pageSize"
+      let-selectedCount="selectedCount"
+      let-curPage="curPage"
+      let-offset="offset"
+      let-isVisible="isVisible"
+    >
+      <datatable-pager
+        [pagerLeftArrowIcon]="'datatable-icon-left'"
+        [pagerRightArrowIcon]="'datatable-icon-right'"
+        [pagerPreviousIcon]="'datatable-icon-prev'"
+        [pagerNextIcon]="'datatable-icon-skip'"
+        [page]="curPage"
+        [size]="pageSize"
+        [count]="rowCount"
+        [hidden]="!(rowCount / pageSize > 1)"
+        (change)="table.onFooterPage($event)"
+      >
+      </datatable-pager>
+    </ng-template>
+  </ngx-datatable-footer>
+    </ngx-datatable>
+  </div>
+  

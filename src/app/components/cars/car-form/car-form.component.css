@@ -1,0 +1,8 @@
+i.fa.fa-asterisk {
+    font-size: 7px;
+   
+    color: #ff0000a1;
+}
+::ng-deep .col-form-label{
+   font-size: 1rem !important ;
+}

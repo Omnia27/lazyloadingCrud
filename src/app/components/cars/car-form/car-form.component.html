@@ -1,0 +1,78 @@
+
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>
+              <span [hidden]="isEdit"> Add New</span>
+              <span [hidden]="!isEdit">Edit</span>
+              Car
+            </h5>
+           
+          </div>
+          <div class="card-body">
+            <form class="theme-form"  [formGroup]="carform">
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="col-form-label pt-0"> Name <i
+                        class="fa fa-asterisk"></i></label>
+                    <input class="form-control" type="text" placeholder="enter car name "
+                      formControlName="name" />
+                    <div class="text-danger" *ngIf="!carform.valid && isSubmited">
+                      <span
+                        *ngIf="f.name.errors?.required">this field is required</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                      <label class="col-form-label pt-0"> Model <i
+                          class="fa fa-asterisk"></i></label>
+                      <input class="form-control" type="text" placeholder="enter model  "
+                        formControlName="model" />
+                      <div class="text-danger" *ngIf="!carform.valid && isSubmited">
+                        <span
+                          *ngIf="f.model.errors?.required">this field is required</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label class="col-form-label pt-0"> Color <i
+                          class="fa fa-asterisk"></i></label>
+                      <input class="form-control" type="text" placeholder="enter color "
+                        formControlName="color" />
+                      <div class="text-danger" *ngIf="!carform.valid && isSubmited">
+                        <span
+                          *ngIf="f.color.errors?.required">this field is required</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label class="col-form-label pt-0"> Imgurl <i
+                          class="fa fa-asterisk"></i></label>
+                      <input class="form-control" type="text" placeholder="enter Imgurl "
+                        formControlName="imageUrl" />
+                      <div class="text-danger" *ngIf="!carform.valid && isSubmited">
+                          <span *ngIf="f.imageUrl.errors?.pattern">Please enter valid url.</span>
+                          <span
+                          *ngIf="f.imageUrl.errors?.required">this field is required</span>
+                      </div>
+                    </div>
+                  </div>
+                 
+                
+              </div>
+            
+                <button  [hidden]="isEdit"(click)="save()" class="btn btn-dark float-right">save</button>
+              <button [hidden]="!isEdit" (click)="update()"  class="btn btn-dark float-right"> Edit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>

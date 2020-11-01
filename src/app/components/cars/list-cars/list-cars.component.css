@@ -1,0 +1,8 @@
+::ng-deep .ngx-datatable.fixed-header .datatable-header .datatable-header-inner {
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.style-input{
+    padding:8px;margin:15px auto;width:30%;
+}
